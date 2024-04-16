@@ -15,9 +15,9 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {}
 4. BeanCreationException 이라 혹시 몰라서 Impl에 @Repository를 넣어줬더니 실행이 된다.
    ```java
    @Slf4j
-@Repository
-@RequiredArgsConstructor
-public class ProductRepositoryImpl implements ProductRepositoryCustom{}
+   @Repository
+   @RequiredArgsConstructor
+   public class ProductRepositoryImpl implements ProductRepositoryCustom{}
    ```
    > RepositoryImpl에는 @Repository 어노테이션을 명시적으로 추가할 필요가 없다고 알고 있고, 또 이전 프로젝트에서는 @Repository 없이도 실행이 되었는데 뭐가 문제일까?
 
