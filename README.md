@@ -5,8 +5,7 @@
 > [!error] BeanCreationException** Error creating bean with name 'productRepository' 에러가 발생했다.
 
 
-> [!note]  이것만  알아두세요!
->  옵시디언은 정말 편한 도구입니다.
+ [!note]  이것만  알아두세요! 옵시디언은 정말 편한 도구입니다.
 ```java
 @Slf4j
 @RequiredArgsConstructor
