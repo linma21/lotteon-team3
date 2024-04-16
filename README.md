@@ -3,11 +3,8 @@
 ## 🛒프로젝트 소개
 롯데e-커머스 LOTTE ON 쇼핑몰 개발
 
-
-## ⏱프로젝트 기간/ 👫인
+## 📆 프로젝트 기간/ 👫인원 
 2024.04.15. ~ 2024.05.16 (1개월) / 4명
-
-## 💙프로젝트 페이지 소개
 
 ## 📚기술스택
 <div align=center> 
@@ -38,6 +35,8 @@
 <br>
 
 
+## 💙프로젝트 페이지 소개
+
 ## 🌟프로젝트 주요 기능 소개 
 
 ## 🖥개발 환경
@@ -46,7 +45,7 @@
 - Language : Java 17, HTML5, CSS3, Javascript, jQuery 3.1
 - DBMS : MySQL 8.0
 
-## 정보구조(IA : Information Architecture)
+## 🏗️ 정보구조(IA : Information Architecture)
 
 
 ----
