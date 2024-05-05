@@ -73,3 +73,32 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {}
 > ProductRepository가 repository 하위 디렉토리인 product에 있어서 JPA가 해당 구현체를 자동으로 인식하지 못하는 문제였다.<br>
 ![ProductRepository_out](https://github.com/linma21/lotteon-team3/assets/154877422/305e729c-9a46-4ce7-8000-a2eba070aded)<br>
 ProductRepository를 repository로 옮기니까 @Repository없이도 스프링이 해당 패키지를 자동으로 스캔하여 리포지토리를 인식한다.
+>
+### HikariPool Connection 누수
+orderItem 테이블의 opNo칼럼을 option 테이블과 연관관계를 끊고 opNo을 ','로 연결한 VARCHAR 값으로 바꾸게 되면서 기종 oorderItem과 Option 테이블을 조인 조회하던 JPA를 수정했다.
+> 기존 코드
+```
+        QueryResults<Tuple> results =  jpaQueryFactory.select(qOrderItem, qOrder, qProduct, qOption)
+                .from(qOrderItem)
+                .join(qOrder).on(qOrderItem.ordNo.eq(qOrder.ordNo))
+                .join(qProduct).on(qOrderItem.prodNo.eq(qProduct.prodNo))
+                .leftJoin(qOption).on(qOption.opNo.eq(qOrderItem.opNo))
+                .where(expression)
+                .orderBy(qOrderItem.ordItemno.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+```
+> 수정한 코드
+```
+        QueryResults<Tuple> results =  jpaQueryFactory.select(qOrderItem, qOrder, qProduct)
+                .from(qOrderItem)
+                .join(qOrder).on(qOrderItem.ordNo.eq(qOrder.ordNo))
+                .join(qProduct).on(qOrderItem.prodNo.eq(qProduct.prodNo))
+                .where(expression)
+                .orderBy(qOrderItem.ordItemno.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+```
+> **HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@976f98d marked as broken because of SQLSTATE(08S01), ErrorCode(0)** 에러 발생
