@@ -102,3 +102,6 @@ orderItem 테이블의 opNo칼럼을 option 테이블과 연관관계를 끊고 
                 .fetchResults();
 ```
 > **HikariPool-1 - Connection com.mysql.cj.jdbc.ConnectionImpl@976f98d marked as broken because of SQLSTATE(08S01), ErrorCode(0)** 에러 발생
+
+조인할 테이블이 하나 줄어들었고, 쿼리문에도 문제가 없는데 왜 발생하는 걸까?
+다른 테이블 CRUD는 문제없이 작동하고 Table을 원래대로 돌리면 실행되는 걸 보면 Connection 문제는 아닌 것 같다.
