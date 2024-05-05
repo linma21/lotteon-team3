@@ -75,9 +75,9 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {}
 ProductRepository를 repository로 옮기니까 @Repository없이도 스프링이 해당 패키지를 자동으로 스캔하여 리포지토리를 인식한다.
 >
 ### HikariPool Connection 누수
-orderItem 테이블의 opNo칼럼을 option 테이블과 연관관계를 끊고 opNo을 ','로 연결한 VARCHAR 값으로 바꾸게 되면서 기종 oorderItem과 Option 테이블을 조인 조회하던 JPA를 수정했다.
+orderItem 테이블의 opNo칼럼을 option 테이블과 연관관계를 끊고 opNo을 ','로 연결한 VARCHAR 값으로 바꾸게 되면서 기존 orderItem과 Option 테이블을 조인 조회하던 JPA를 수정했다.
 > 기존 코드
-```
+```java
         QueryResults<Tuple> results =  jpaQueryFactory.select(qOrderItem, qOrder, qProduct, qOption)
                 .from(qOrderItem)
                 .join(qOrder).on(qOrderItem.ordNo.eq(qOrder.ordNo))
@@ -90,7 +90,7 @@ orderItem 테이블의 opNo칼럼을 option 테이블과 연관관계를 끊고 
                 .fetchResults();
 ```
 > 수정한 코드
-```
+```java
         QueryResults<Tuple> results =  jpaQueryFactory.select(qOrderItem, qOrder, qProduct)
                 .from(qOrderItem)
                 .join(qOrder).on(qOrderItem.ordNo.eq(qOrder.ordNo))
