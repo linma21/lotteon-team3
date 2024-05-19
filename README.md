@@ -34,9 +34,19 @@
 <br>
 
 
+## 🕸 ERD 설계
+![lotteOn_최종ERD](https://github.com/linma21/lotteon-team3/assets/154877422/e964e93c-b3c1-4683-90b7-a2efb44c7c10)
+
+## 🏗 정보구조
+![Untitled (1)](https://github.com/linma21/lotteon-team3/assets/154877422/149c0724-ab94-490c-8b19-ae89ae8fb069)
+
 ## 💙프로젝트 페이지 소개
 
+## 🐣최종 PPT
+[LotteOn_Team3 (1).pdf](https://github.com/linma21/lotteon-team3/files/15371106/LotteOn_Team3.1.pdf)
+
 ## 🌟프로젝트 주요 기능 소개 
+
 
 ## 🖥개발 환경
 - OS : Window10
