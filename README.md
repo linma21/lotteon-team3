@@ -113,6 +113,24 @@ orderItem 테이블의 opNo칼럼을 option 테이블과 연관관계를 끊고 
 
 조인할 테이블이 하나 줄어들었고, 쿼리문에도 문제가 없는데 왜 발생하는 걸까?
 다른 테이블 CRUD는 문제없이 작동하고 Table을 원래대로 돌리면 실행되는 걸 보면 Connection 문제는 아닌 것 같다.
+> yml 파일에 HikariPool 커넥션 타임아웃을 설정해주니 해결된다.
+```
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/example
+    username: 
+    password: 
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+      connection-timeout: 30000  # 커넥션 타임아웃 설정 (ms)
+      maximum-pool-size: 10  # 커넥션 풀의 최대 크기 설정
+      minimum-idle: 5  # 유휴 커넥션을 유지할 최소한의 커넥션 수 설정
+      idle-timeout: 600000  # 유휴 커넥션의 최대 유지 시간 설정 (ms)
+      pool-name: MyHikariCP  # 커넥션 풀의 이름 설정
+      validation-timeout: 5000  # 커넥션 유효성 검사 타임아웃 설정 (ms)
+      auto-commit: true  # 자동 커밋 모드 설정
+```
+
 참조 : https://hyunsoori.com/entry/Spring-Boot-HikariCP-%ED%8A%9C%EB%8B%9D
 
 ### SSE 이미 Complete된 Emitter 입니다.
